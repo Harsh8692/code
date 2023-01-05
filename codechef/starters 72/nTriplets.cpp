@@ -44,10 +44,9 @@ Test case 33: It can be shown that no three positive integers A, B, CA,B,C satis
 */
 
 /*-----------------------------------*/
-/*
-The following code is working but not time efficiently.
-*/
+
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main() {
@@ -56,25 +55,17 @@ int main() {
 	for(int i=0;i<t;i++){
 	    cin>>n;
 	    int flag=0;
-	    for(int j=1;j<n;j++){
+	    int a=1;
+	    for(int j=2;j*j<n;j++){
 	        if(n%j==0){
-	            int newnum = n/j;
-	            for(int k=j+1;k<newnum;k++){
-	                if(newnum%k==0){
-	                    int last = newnum/k;
-	                }
-	                int a = j;
-	                int b=k;
-	                int c=newnum/k;
-	                if(n%(a*b)==0&&n%(b*c)==0&&n%(c*a)==0&&(a*b*c)%n==0){
-	                    cout<<a<<" "<<b<<" "<<c<<endl;
-	                    flag++;
-	                    break;
-	                }
+	            int b = j;
+	            int c = n/j;
+	            if(n%(a*b)==0&&n%(b*c)==0&&n%(c*a)==0&&(a*b*c)%n==0){
+	                cout<<a<<" "<<b<<" "<<c<<endl;
+	                flag++;
+	                break;
 	            }
-	            if(flag!=0)break;
 	        }
-	        if (flag!=0)break;
 	    }
 	    if(flag==0)cout<<"-1"<<endl;
 	}
